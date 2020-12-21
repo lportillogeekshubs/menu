@@ -6,15 +6,15 @@
     <p>Esto es mi body</p>
 
     @foreach ($plateIngredients as $plateIngredient)
+    <ul>
+        <li>Titulo: {{ $plateIngredient['plate']->title }}</li>
+        <li>Comenzales: {{ $plateIngredient['plate']->diners }}</li>
+        <li>Tipo: {{ $plateIngredient['plate']->type }}</li>
         <ul>
-            <li>Titulo: {{ $plateIngredient['plate']->title }}</li>
-            <li>Comenzales: {{ $plateIngredient['plate']->diners }}</li>
-            <li>Tipo: {{ $plateIngredient['plate']->type }}</li>
-            <ul>
-                @foreach ($plateIngredient['ingredients'] as $ingredient)
-                    <li> {{ $ingredient->quantity }} {{ $ingredient->name }}</li>
-                @endforeach
-            </ul>
+            @foreach ($plateIngredient['ingredients'] as $ingredient)
+                <li> {{ $ingredient['quantity'] }} {{ $ingredient['name'] }}</li>
+            @endforeach
         </ul>
-    @endforeach
+    </ul>
+@endforeach
 @endsection
